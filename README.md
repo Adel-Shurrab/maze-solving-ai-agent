@@ -59,7 +59,7 @@ S # #   #
   #   # #
     #   G
 
-**## Team Members**
+## Team Members
 **Adel Surrab:** Algorithm Developer (A*/BFS).
 **Abd Alhaleem:** Visualization Lead (matplotlib).
 **Faisal Alzeer:** Testing & Documentation.

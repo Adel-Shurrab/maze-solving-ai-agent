@@ -1,6 +1,6 @@
 # Maze-Solving AI Agent 🧩
 
-Welcome to the **Maze-Solving AI Agent** project! This Python-based project implements intelligent agents that solve mazes using search algorithms like **A*** and **BFS**. The agent navigates from the start (`S`) to the goal (`G`) while avoiding walls (`#`), and the process is visualized using `matplotlib`.
+Welcome to the **Maze-Solving AI Agent** project! This Python-based project implements intelligent agents that solve mazes using search algorithms like **A\*** and **BFS**. The agent navigates from the start (`S`) to the goal (`G`) while avoiding walls (`#`), and the process is visualized using `matplotlib`.
 
 ---
 
@@ -8,7 +8,7 @@ Welcome to the **Maze-Solving AI Agent** project! This Python-based project impl
 1. [Project Overview](#project-overview)
 2. [Features](#features)
 3. [Setup Instructions](#setup-instructions)
-4. [Usage](#Usage)
+4. [Usage](#usage)
 5. [Team Members](#team-members)
 6. [Project Structure](#project-structure)
 
@@ -21,7 +21,7 @@ This project is part of the **Artificial Intelligence** course. The goal is to b
 
 ## Features
 - **Search Algorithms**:  
-  - **A***: Optimized with Manhattan distance heuristic.  
+  - **A\***: Optimized with Manhattan distance heuristic.  
   - **BFS**: Guarantees the shortest path (uninformed search).  
 - **Visualization**:  
   - Animated maze-solving process using `matplotlib`.  
@@ -37,35 +37,51 @@ This project is part of the **Artificial Intelligence** course. The goal is to b
    ```bash
    git clone https://github.com/your-username/maze-solving-ai-agent.git
    cd maze-solving-ai-agent
+   ```
 
-2. **Install Dependencies**:
-    pip install -r requirements.txt
+2. **Install Dependencies**:  
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-3. **Run the Agent**:
-    python code/main.py --maze data/mazes/simple_maze.txt
-  
+3. **Run the Agent**:  
+   ```bash
+   python code/main.py --maze data/mazes/simple_maze.txt
+   ```
+
+---
+
 ## Usage
-**Running the Agent**
-To solve a maze using **A***:
-python code/main.py --maze data/mazes/simple_maze.txt --algorithm a_star
-
-To solve a maze using **BFS**:
-python code/main.py --maze data/mazes/simple_maze.txt --algorithm bfs
-
-**Custom Mazes**
-Add your own maze to data/mazes/ in the following format:
+**Running the Agent**  
+To solve a maze using **A\***:  
 ```bash
+python code/main.py --maze data/mazes/simple_maze.txt --algorithm a_star
+```
+
+To solve a maze using **BFS**:  
+```bash
+python code/main.py --maze data/mazes/simple_maze.txt --algorithm bfs
+```
+
+**Custom Mazes**  
+Add your own maze to `data/mazes/` in the following format:  
+```plaintext
 S # #   #
   #   # #
     #   G
-bash```
+```
+
+---
 
 ## Team Members
-**Adel Surrab:** Algorithm Developer (A*/BFS).
-**Abd Alhaleem:** Visualization Lead (matplotlib).
-**Faisal Alzeer:** Testing & Documentation.
+- **Adel Surrab**: Algorithm Developer (A\*/BFS)
+- **Abd Alhaleem**: Visualization Lead (matplotlib)
+- **Faisal Alzeer**: Testing & Documentation
+
+---
 
 ## Project Structure
+```plaintext
 maze-solving-ai-agent/  
 ├── code/  
 │   ├── algorithms/             # A* and BFS implementations  
@@ -78,3 +94,4 @@ maze-solving-ai-agent/
 ├── .gitignore                  # Ignored files  
 ├── requirements.txt            # Python dependencies  
 └── README.md                   # This file  
+```

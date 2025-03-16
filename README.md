@@ -7,10 +7,10 @@ Welcome to the **Maze-Solving AI Agent** project! This Python-based project impl
 ## Table of Contents
 1. [Project Overview](#project-overview)
 2. [Features](#features)
-3. Setup Instructions
-4. Usage
+3. [Setup Instructions](#setup-instructions)
+4. [Usage](#Usage)
 5. [Team Members](#team-members)
-6. Project Structure
+6. [Project Structure](#project-structure)
 
 ---
 

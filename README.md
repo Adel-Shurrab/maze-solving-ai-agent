@@ -54,10 +54,10 @@ python code/main.py --maze data/mazes/simple_maze.txt --algorithm bfs
 
 **Custom Mazes**
 Add your own maze to data/mazes/ in the following format:
-
-S █ █   █
-  █   █ █
-    █   G
+'''bash
+S # #   #
+  #   # #
+    #   G
 
 ## Team Members
 **Adel Surrab:** Algorithm Developer (A*/BFS).

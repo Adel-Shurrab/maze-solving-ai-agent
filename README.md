@@ -57,8 +57,8 @@ Add your own maze to data/mazes/ in the following format:
 ```bash
 S # #   #
   #   # #
-    #   
-        G
+    #   G
+bash```
 
 ## Team Members
 **Adel Surrab:** Algorithm Developer (A*/BFS).

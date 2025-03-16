@@ -1,6 +1,6 @@
 # Maze-Solving AI Agent 🧩
 
-Welcome to the **Maze-Solving AI Agent** project! This Python-based project implements intelligent agents that solve mazes using search algorithms like **A\*** and **BFS**. The agent navigates from the start (`S`) to the goal (`G`) while avoiding walls (`#`), and the process is visualized using `matplotlib`.
+Welcome to the **Maze-Solving AI Agent** project! This Python-based project implements intelligent agents that solve mazes using search algorithms like **A\***, **BFS**, and **DFS**. The agent navigates from the start (`S`) to the goal (`G`) while avoiding walls (`#`), and the process is visualized using `matplotlib`.
 
 ---
 
@@ -23,6 +23,7 @@ This project is part of the **Artificial Intelligence** course. The goal is to b
 - **Search Algorithms**:  
   - **A\***: Optimized with Manhattan distance heuristic.  
   - **BFS**: Guarantees the shortest path (uninformed search).  
+  - **DFS**: Depth-First Search for maze solving.  
 - **Visualization**:  
   - Animated maze-solving process using `matplotlib`.  
 - **Custom Mazes**:  
@@ -63,6 +64,11 @@ To solve a maze using **BFS**:
 python code/main.py --maze data/mazes/simple_maze.txt --algorithm bfs
 ```
 
+To solve a maze using **DFS**:  
+```bash
+python code/main.py --maze data/mazes/simple_maze.txt --algorithm dfs
+```
+
 **Custom Mazes**  
 Add your own maze to `data/mazes/` in the following format:  
 ```plaintext
@@ -74,7 +80,7 @@ S # #   #
 ---
 
 ## Team Members
-- **Adel Surrab**: Algorithm Developer (A\*/BFS)
+- **Adel Surrab**: Algorithm Developer (A\*/BFS/DFS)
 - **Abd Alhaleem**: Visualization Lead (matplotlib)
 - **Faisal Alzeer**: Testing & Documentation
 
@@ -84,7 +90,7 @@ S # #   #
 ```plaintext
 maze-solving-ai-agent/  
 ├── code/  
-│   ├── algorithms/             # A* and BFS implementations  
+│   ├── algorithms/             # A*, BFS, and DFS implementations  
 │   ├── visualization/          # Maze plotting code  
 │   ├── tests/                  # Unit tests  
 │   └── main.py                 # Entry point  

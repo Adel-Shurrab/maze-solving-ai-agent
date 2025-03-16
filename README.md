@@ -7,7 +7,10 @@ Welcome to the **Maze-Solving AI Agent** project! This Python-based project impl
 ## Table of Contents
 1. [Project Overview](#project-overview)
 2. [Features](#features)
-3. [Team Members](#team-members)
+3. Setup Instructions
+4. Usage
+5. [Team Members](#team-members)
+6. Project Structure
 
 ---
 
@@ -58,9 +61,7 @@ S # #   #
 
 ## Team Members
 **Adel Surrab:** Algorithm Developer (A*/BFS).
-
 **Abd Alhaleem:** Visualization Lead (matplotlib).
-
 **Faisal Alzeer:** Testing & Documentation.
 
 ## Project Structure

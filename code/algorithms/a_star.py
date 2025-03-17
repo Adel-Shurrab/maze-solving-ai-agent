@@ -3,13 +3,30 @@ from pyamaze import maze, agent, textLabel
 from queue import PriorityQueue
 
 def h(cell1, cell2):
-    """Heuristic function for A* (Manhattan distance)."""
+    """
+    Heuristic function for A* (Manhattan distance).
+
+    Parameters:
+    cell1 (tuple): The first cell coordinates (x, y).
+    cell2 (tuple): The second cell coordinates (x, y).
+
+    Returns:
+    int: The Manhattan distance between the two cells.
+    """
     x1, y1 = cell1
     x2, y2 = cell2
     return abs(x1 - x2) + abs(y1 - y2)
 
 def aStar(m):
-    """A* algorithm implementation for maze solving."""
+    """
+    A* algorithm implementation for maze solving.
+
+    Parameters:
+    m (maze): The maze object.
+
+    Returns:
+    dict: The solution path as a dictionary of cell connections.
+    """
     start = (m.rows, m.cols)
     g_score = {cell: float('inf') for cell in m.grid}
     g_score[start] = 0

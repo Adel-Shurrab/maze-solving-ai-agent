@@ -2,7 +2,15 @@
 from pyamaze import maze, agent, COLOR, textLabel
 
 def BFS(m):
-    """BFS algorithm implementation for maze solving."""
+    """
+    BFS algorithm implementation for maze solving.
+
+    Parameters:
+    m (maze): The maze object.
+
+    Returns:
+    dict: The solution path as a dictionary of cell connections.
+    """
     start = (m.rows, m.cols)
     frontier = [start]
     explored = [start]

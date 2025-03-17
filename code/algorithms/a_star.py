@@ -1,62 +1,57 @@
-# algorithms/a_star.py
+from pyamaze import maze,agent,textLabel
 from queue import PriorityQueue
-import pygame
+def h(cell1,cell2):
+    x1,y1=cell1
+    x2,y2=cell2
 
-def h(p1, p2):
-    """Heuristic function (Manhattan distance)."""
-    x1, y1 = p1
-    x2, y2 = p2
-    return abs(x1 - x2) + abs(y1 - y2)
+    return abs(x1-x2) + abs(y1-y2)
+def aStar(m):
+    start=(m.rows,m.cols)
+    g_score={cell:float('inf') for cell in m.grid}
+    g_score[start]=0
+    f_score={cell:float('inf') for cell in m.grid}
+    f_score[start]=h(start,(1,1))
 
-def reconstruct_path(came_from, current, draw):
-    """Reconstruct and draw the path from start to end."""
-    while current in came_from:
-        current = came_from[current]
-        current.make_path()
-        draw()
+    open=PriorityQueue()
+    open.put((h(start,(1,1)),h(start,(1,1)),start))
+    aPath={}
+    while not open.empty():
+        currCell=open.get()[2]
+        if currCell==(1,1):
+            break
+        for d in 'ESNW':
+            if m.maze_map[currCell][d]==True:
+                if d=='E':
+                    childCell=(currCell[0],currCell[1]+1)
+                if d=='W':
+                    childCell=(currCell[0],currCell[1]-1)
+                if d=='N':
+                    childCell=(currCell[0]-1,currCell[1])
+                if d=='S':
+                    childCell=(currCell[0]+1,currCell[1])
 
-def algorithm(draw, grid, start, end):
-    """A* algorithm implementation."""
-    count = 0
-    open_set = PriorityQueue()
-    open_set.put((0, count, start))
-    came_from = {}
-    g_score = {spot: float("inf") for row in grid for spot in row}
-    g_score[start] = 0
-    f_score = {spot: float("inf") for row in grid for spot in row}
-    f_score[start] = h(start.get_pos(), end.get_pos())
+                temp_g_score=g_score[currCell]+1
+                temp_f_score=temp_g_score+h(childCell,(1,1))
 
-    open_set_hash = {start}
+                if temp_f_score < f_score[childCell]:
+                    g_score[childCell]= temp_g_score
+                    f_score[childCell]= temp_f_score
+                    open.put((temp_f_score,h(childCell,(1,1)),childCell))
+                    aPath[childCell]=currCell
+    fwdPath={}
+    cell=(1,1)
+    while cell!=start:
+        fwdPath[aPath[cell]]=cell
+        cell=aPath[cell]
+    return fwdPath
 
-    while not open_set.empty():
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
+if __name__=='__main__':
+    m=maze(15,15)
+    m.CreateMaze()
+    path=aStar(m)
 
-        current = open_set.get()[2]
-        open_set_hash.remove(current)
+    a=agent(m,footprints=True)
+    m.tracePath({a:path})
+    l=textLabel(m,'A Star Path Length',len(path)+1)
 
-        if current == end:
-            reconstruct_path(came_from, end, draw)
-            end.make_end()
-            return True
-
-        for neighbor in current.neighbors:
-            temp_g_score = g_score[current] + 1
-
-            if temp_g_score < g_score[neighbor]:
-                came_from[neighbor] = current
-                g_score[neighbor] = temp_g_score
-                f_score[neighbor] = temp_g_score + h(neighbor.get_pos(), end.get_pos())
-                if neighbor not in open_set_hash:
-                    count += 1
-                    open_set.put((f_score[neighbor], count, neighbor))
-                    open_set_hash.add(neighbor)
-                    neighbor.make_open()
-
-        draw()
-
-        if current != start:
-            current.make_closed()
-
-    return False
+    m.run()

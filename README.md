@@ -1,6 +1,6 @@
 # Maze-Solving AI Agent 🧩
 
-Welcome to the **Maze-Solving AI Agent** project! This Python-based project implements intelligent agents that solve mazes using search algorithms like **A\***, **BFS**, and **DFS**. The agent navigates from the start (`S`) to the goal (`G`) while avoiding walls (`#`), and the process is visualized using `matplotlib`.
+Welcome to the **Maze-Solving AI Agent** project! This Python-based project implements intelligent agents that solve mazes using search algorithms like **A*** and **BFS**. The agent navigates from the bottom-right corner to the top-left corner, with visualization powered by `pyamaze`.
 
 ---
 
@@ -15,67 +15,71 @@ Welcome to the **Maze-Solving AI Agent** project! This Python-based project impl
 ---
 
 ## Project Overview
-This project is part of the **Artificial Intelligence** course. The goal is to build an AI agent that solves mazes using search algorithms. The agent demonstrates rational decision-making by finding the shortest path from start to goal while avoiding obstacles.
+This project demonstrates maze solving using informed and uninformed search algorithms. The implementation features:
+- A* algorithm with Manhattan distance heuristic
+- Breadth-First Search (BFS)
+- Dynamic maze generation with customizable loops
+- Path visualization with step-by-step animation
 
 ---
 
 ## Features
 - **Search Algorithms**:  
-  - **A\***: Optimized with Manhattan distance heuristic.  
-  - **BFS**: Guarantees the shortest path (uninformed search).  
-  - **DFS**: Depth-First Search for maze solving.  
+  - **A***: Optimized with Manhattan distance heuristic  
+  - **BFS**: Uninformed search guaranteeing shortest path  
+- **Maze Generation**:  
+  - Customizable grid sizes (up to 20x20)  
+  - Adjustable loop percentage (0-100%)  
 - **Visualization**:  
-  - Animated maze-solving process using `matplotlib`.  
-- **Custom Mazes**:  
-  - Load mazes from text files or generate them dynamically.  
-- **Performance Metrics**:  
-  - Measure execution time and path length for comparison. 
+  - Real-time path tracing with `pyamaze`  
+  - Path length comparison between algorithms  
 
 ---
 
 ## Setup Instructions
 1. **Clone the Repository**:  
    ```bash
-   git clone https://github.com/your-username/maze-solving-ai-agent.git
+   git clone https://github.com/Adel-Shurrab/maze-solving-ai-agent.git
    cd maze-solving-ai-agent
    ```
 
 2. **Install Dependencies**:  
    ```bash
-   pip install -r requirements.txt
+   pip install pyamaze
    ```
 
 3. **Run the Agent**:  
    ```bash
-   python code/main.py --maze data/mazes/simple_maze.txt
+   python code/main.py
    ```
 
 ---
 
 ## Usage
-**Running the Agent**  
-To solve a maze using **A\***:  
-```bash
-python code/main.py --maze data/mazes/simple_maze.txt --algorithm a_star
-```
 
-To solve a maze using **BFS**:  
-```bash
-python code/main.py --maze data/mazes/simple_maze.txt --algorithm bfs
-```
+The default configuration:
 
-To solve a maze using **DFS**:  
-```bash
-python code/main.py --maze data/mazes/simple_maze.txt --algorithm dfs
-```
+    Generates a 20x20 maze with 40% loops
 
-**Custom Mazes**  
-Add your own maze to `data/mazes/` in the following format:  
-```plaintext
-S # #   #
-  #   # #
-    #   G
-```
+    Solves using A* algorithm
+
+    Displays solution path with agent animation
+
+To modify behavior:
+
+    Edit code/main.py:
+
+        Change maze dimensions: rows, cols = 20, 20
+
+        Adjust loop percentage: loopPercent=40
+
+        Uncomment BFS section to compare algorithms
+
+Example output:
+
+    Interactive maze window with agent path
+
+    Path length displayed in window title
 
 ---
 

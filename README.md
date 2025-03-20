@@ -85,7 +85,7 @@ Example output:
 
 ## Team Members
 - **Adel Surrab**: Algorithm Developer (A\*/BFS/DFS)
-- **Abd Alhaleem**: Visualization Lead (matplotlib)
+- **Abd Alhalim**: Visualization Lead (matplotlib)
 - **Faisal Alzeer**: Testing & Documentation
 
 ---
@@ -94,7 +94,7 @@ Example output:
 ```plaintext
 maze-solving-ai-agent/  
 ├── code/  
-│   ├── algorithms/             # A*, BFS, and DFS implementations  
+│   ├── algorithms/             # A* and BFS implementations  
 │   ├── visualization/          # Maze plotting code  
 │   ├── tests/                  # Unit tests  
 │   └── main.py                 # Entry point  

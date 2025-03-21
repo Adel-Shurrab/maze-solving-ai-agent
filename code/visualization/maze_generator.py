@@ -14,5 +14,5 @@ def generate_maze(rows, cols, loopPercent=0):
     maze: The generated maze object.
     """
     m = maze(rows, cols)
-    m.CreateMaze(loopPercent=loopPercent)
+    m.CreateMaze(loopPercent=loopPercent,saveMaze=True,loadMaze=None)
     return m

@@ -9,16 +9,16 @@ def main():
     Main function to generate a maze and solve it using BFS and A* algorithms.
     """
     # Generate a maze
-    rows, cols = 20, 20
-    maze = generate_maze(rows, cols, loopPercent=40)
+    rows, cols = 50, 50
+    maze = generate_maze(rows, cols, loopPercent=0)
 
     # Solve using A*
-    a_star_path = aStar(maze)
-    plot_maze(maze, a_star_path, "A*")
+    # a_star_path = aStar(maze)
+    # plot_maze(maze, a_star_path, "A*")
 
     # Solve using BFS
-    # bfs_path = BFS(maze)
-    # plot_maze(maze, bfs_path, "BFS")
+    bfs_path = BFS(maze)
+    plot_maze(maze, bfs_path, "BFS")
 
 if __name__ == "__main__":
     main()

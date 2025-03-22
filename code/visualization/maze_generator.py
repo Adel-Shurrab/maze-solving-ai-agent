@@ -14,5 +14,5 @@ def generate_maze(rows, cols, loopPercent=0):
     maze: The generated maze object.
     """
     m = maze(rows, cols)
-    m.CreateMaze(loopPercent=loopPercent,saveMaze=False,loadMaze='maze--2025-03-21--13-56-33.csv')
+    m.CreateMaze(loopPercent=loopPercent)
     return m

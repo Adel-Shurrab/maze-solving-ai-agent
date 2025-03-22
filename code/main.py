@@ -10,7 +10,7 @@ def main():
     """
     # Generate a maze
     rows, cols = 20, 20
-    maze = generate_maze(rows, cols, loopPercent=10)
+    maze = generate_maze(rows, cols, loopPercent=40)
 
     # Solve using A*
     # a_star_path = aStar(maze)

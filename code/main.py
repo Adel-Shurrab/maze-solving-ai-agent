@@ -9,8 +9,8 @@ def main():
     Main function to generate a maze and solve it using BFS and A* algorithms.
     """
     # Generate a maze
-    rows, cols = 50, 50
-    maze = generate_maze(rows, cols, loopPercent=0)
+    rows, cols = 20, 20
+    maze = generate_maze(rows, cols, loopPercent=10)
 
     # Solve using A*
     # a_star_path = aStar(maze)

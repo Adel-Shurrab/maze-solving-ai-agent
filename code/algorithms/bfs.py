@@ -1,46 +1,49 @@
 # code/algorithms/bfs.py
-from pyamaze import maze, agent, COLOR, textLabel
+from pyamaze import maze
 
 def BFS(m):
     """
-    BFS algorithm implementation for maze solving.
-
-    Parameters:
-    m (maze): The maze object.
-
-    Returns:
-    dict: The solution path as a dictionary of cell connections.
+    BFS implementation using standard FIFO queue
+    Returns path and nodes explored count
     """
     start = (m.rows, m.cols)
+    goal = (1, 1)
+    
+    # Standard queue implementation
     frontier = [start]
-    explored = [start]
-    bfsPath = {}
+    explored = {start: None}
+    nodes_explored = 0
 
-    while len(frontier) > 0:
-        currCell = frontier.pop(0)
-        if currCell == (1, 1):
+    while frontier:
+        currCell = frontier.pop(0)  # FIFO operation
+        nodes_explored += 1
+        
+        if currCell == goal:
             break
+        
+        # Check all directions
         for d in 'ESNW':
-            if m.maze_map[currCell][d] == True:
+            if m.maze_map[currCell][d]:
+                x, y = currCell
+                # Calculate child cell
                 if d == 'E':
-                    childCell = (currCell[0], currCell[1] + 1)
+                    child = (x, y+1)
                 elif d == 'W':
-                    childCell = (currCell[0], currCell[1] - 1)
+                    child = (x, y-1)
                 elif d == 'N':
-                    childCell = (currCell[0] - 1, currCell[1])
+                    child = (x-1, y)
                 elif d == 'S':
-                    childCell = (currCell[0] + 1, currCell[1])
+                    child = (x+1, y)
 
-                if childCell in explored:
-                    continue
-                frontier.append(childCell)
-                explored.append(childCell)
-                bfsPath[childCell] = currCell
+                if child not in explored:
+                    frontier.append(child)
+                    explored[child] = currCell
 
-    fwdPath = {}
-    cell = (1, 1)
+    # Reconstruct path
+    path = {}
+    cell = goal
     while cell != start:
-        fwdPath[bfsPath[cell]] = cell
-        cell = bfsPath[cell]
-
-    return fwdPath
+        path[explored[cell]] = cell
+        cell = explored[cell]
+    
+    return path, nodes_explored

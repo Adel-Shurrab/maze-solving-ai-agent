@@ -1,24 +1,49 @@
-# code/main.py
-from algorithms.a_star import aStar
 from algorithms.bfs import BFS
+from algorithms.a_star import aStar
 from visualization.maze_generator import generate_maze
-from visualization.plot_maze import plot_maze
+from visualization.plotter import MazePlotter
+from pyamaze import COLOR
+import time
+
+def benchmark(func, maze):
+    """benchmarking with process time"""
+    start = time.process_time()
+    path, nodes = func(maze)
+    elapsed = time.process_time() - start
+    return path, elapsed, nodes
 
 def main():
-    """
-    Main function to generate a maze and solve it using BFS and A* algorithms.
-    """
-    # Generate a maze
-    rows, cols = 20, 20
-    maze = generate_maze(rows, cols, loopPercent=40)
+    # Generate maze with validation
+    try:
+        m = generate_maze(20, 20, loopPercent=40)
+        if not m.maze_map:
+            raise ValueError("Maze generation failed")
+    except Exception as e:
+        print(f"Maze Error: {e}")
+        return
 
-    # Solve using A*
-    # a_star_path = aStar(maze)
-    # plot_maze(maze, a_star_path, "A*")
+    # Benchmark algorithms
+    try:
+        bfs_path, bfs_time, bfs_nodes = benchmark(BFS, m)
+        astar_path, astar_time, astar_nodes = benchmark(aStar, m)
+    except KeyError as e:
+        print(f"Pathfinding Error: Missing key {e}")
+        return
 
-    # Solve using BFS
-    bfs_path = BFS(maze)
-    plot_maze(maze, bfs_path, "BFS")
+    # Results analysis
+    print("\n=== Performance Metrics ===")
+    print(f"BFS Time: {bfs_time:.6f}s | Nodes Explored: {bfs_nodes}")
+    print(f"A* Time: {astar_time:.6f}s | Nodes Explored: {astar_nodes}")
+    print(f"\nPath Lengths - BFS: {len(bfs_path)} | A*: {len(astar_path)}")
+    
+    # Visualization
+    try:
+        plotter = MazePlotter(m)
+        plotter.add_path(bfs_path, COLOR.red, "BFS")
+        plotter.add_path(astar_path, COLOR.blue, "A*")
+        plotter.show()
+    except Exception as e:
+        print(f"Visualization Error: {e}")
 
 if __name__ == "__main__":
     main()

@@ -11,28 +11,35 @@ Welcome to the **Maze-Solving AI Agent** project! This Python-based project impl
 4. [Usage](#usage)
 5. [Team Members](#team-members)
 6. [Project Structure](#project-structure)
+7. [Performance Metrics](#performance-metrics)
 
 ---
 
 ## Project Overview
 This project demonstrates maze solving using informed and uninformed search algorithms. The implementation features:
-- A* algorithm with Manhattan distance heuristic
-- Breadth-First Search (BFS)
+- **A*** algorithm with Manhattan distance heuristic
+- **BFS** (Breadth-First Search) for guaranteed shortest paths
 - Dynamic maze generation with customizable loops
 - Path visualization with step-by-step animation
+- Performance metrics including execution time and nodes explored
 
 ---
 
 ## Features
 - **Search Algorithms**:  
-  - **A***: Optimized with Manhattan distance heuristic  
-  - **BFS**: Uninformed search guaranteeing shortest path  
+  - **A***: Optimized with Manhattan distance heuristic and priority queue  
+  - **BFS**: Uninformed search using a standard queue, guaranteeing the shortest path  
 - **Maze Generation**:  
-  - Customizable grid sizes (up to 20x20)  
+  - Customizable grid sizes (up to 35x35)  
   - Adjustable loop percentage (0-100%)  
 - **Visualization**:  
   - Real-time path tracing with `pyamaze`  
   - Path length comparison between algorithms  
+  - Multiple paths visualized simultaneously (BFS in red, A* in blue)  
+- **Performance Metrics**:  
+  - Execution time for each algorithm  
+  - Number of nodes explored  
+  - Path length comparison  
 
 ---
 
@@ -57,36 +64,40 @@ This project demonstrates maze solving using informed and uninformed search algo
 
 ## Usage
 
-The default configuration:
+### Default Configuration:
+- Generates a **20x20 maze** with **10% loops**
+- Solves using both **BFS** and **A*** algorithms
+- Displays solution paths with agent animation
+- Prints performance metrics (time and nodes explored)
 
-    Generates a 20x20 maze with 40% loops
+### Customization:
+Edit `code/main.py` to modify:
+- Maze dimensions:  
+  ```python
+  rows, cols = 20, 20  # Change to desired size
+  ```
+- Loop percentage:  
+  ```python
+  loopPercent = 10  # Adjust between 0 (no loops) and 100 (many loops)
+  ```
+- Visualization:  
+  Uncomment/comment sections in `main.py` to enable/disable specific algorithms.
 
-    Solves using A* algorithm
+### Example Output:
+```plaintext
+=== Performance Metrics ===
+BFS Time: 0.0019s | Nodes Explored: 1226
+A* Time: 0.0064s | Nodes Explored: 1303
 
-    Displays solution path with agent animation
-
-To modify behavior:
-
-    Edit code/main.py:
-
-        Change maze dimensions: rows, cols = 20, 20
-
-        Adjust loop percentage: loopPercent=40
-
-        Uncomment BFS section to compare algorithms
-
-Example output:
-
-    Interactive maze window with agent path
-
-    Path length displayed in window title
+Path Lengths - BFS: 90 | A*: 90
+```
 
 ---
 
 ## Team Members
-- **Adel Surrab**: Algorithm Developer (A\*/BFS/DFS)
-- **Abd Alhalim**: Visualization Lead (matplotlib)
-- **Faisal Alzeer**: Testing & Documentation
+- **Adel Shurrab**
+- **Abd Alhalim**
+- **Faisal Alzeer**
 
 ---
 
@@ -95,8 +106,11 @@ Example output:
 maze-solving-ai-agent/  
 ├── code/  
 │   ├── algorithms/             # A* and BFS implementations  
+│   │   ├── a_star.py           # A* with priority queue  
+│   │   └── bfs.py              # BFS with standard queue  
 │   ├── visualization/          # Maze plotting code  
-│   ├── tests/                  # Unit tests  
+│   │   ├── maze_generator.py   # Maze generation logic  
+│   │   └── plotter.py          # Path visualization  
 │   └── main.py                 # Entry point  
 ├── data/                       # Maze files and results 
 ├── docs/                       # Report and presentation  
@@ -105,3 +119,33 @@ maze-solving-ai-agent/
 ├── requirements.txt            # Python dependencies  
 └── README.md                   # This file  
 ```
+
+---
+
+## Performance Metrics
+The project provides detailed performance metrics for each algorithm:
+- **Execution Time**: Measures how long each algorithm takes to solve the maze.
+- **Nodes Explored**: Counts the number of nodes explored during the search.
+- **Path Length**: Compares the length of the paths found by BFS and A*.
+
+### Example Output:
+```plaintext
+=== Performance Metrics ===
+BFS Time: 0.0019s | Nodes Explored: 1226
+A* Time: 0.0064s | Nodes Explored: 1303
+
+Path Lengths - BFS: 90 | A*: 90
+```
+
+---
+
+## Future Work
+1. **Algorithm Extensions**:
+   - Implement **Dijkstra’s Algorithm** for weighted grids.
+   - Add **bidirectional BFS** for memory optimization.
+2. **Enhanced Heuristics**:
+   - Experiment with **Euclidean distance** or machine learning-based heuristics.
+3. **Real-World Integration**:
+   - Deploy on robotics platforms (e.g., ROS) for physical maze-solving.
+4. **Interactive Features**:
+   - Let users design custom mazes via a GUI.
